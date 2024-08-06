@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { ToastContainer } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
+import { ThemeProviderComponent } from "./context/ThemeContext"
+import Dashboard from "./main/Dashboard"
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <ThemeProviderComponent>
+      <Dashboard />
+      <ToastContainer
+        position='top-right'
+        autoClose={700}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme='colored'
+      />
+    </ThemeProviderComponent>
+  )
 }
 
-export default App;
+export default App
