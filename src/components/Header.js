@@ -17,6 +17,7 @@ import {
   ListItem,
   ListItemText,
   CssBaseline,
+  Badge,
 } from "@mui/material"
 import MenuIcon from "@mui/icons-material/Menu"
 import SearchIcon from "@mui/icons-material/Search"
@@ -41,6 +42,7 @@ const Header = ({
   const [colorAnchorEl, setColorAnchorEl] = useState(null)
   const [modalOpen, setModalOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
+  const [showBadge, setShowBadge] = useState(true)
   const navigate = useNavigate()
 
   const handleModalOpen = () => {
@@ -49,6 +51,12 @@ const Header = ({
 
   const handleModalClose = () => {
     setModalOpen(false)
+  }
+
+  const handleReset = () => {
+    setShowBadge(false)
+    handleColorMenuClose()
+    changeColor("#d9f4e8")
   }
 
   const useKeyPress = (targetKey, action) => {
@@ -92,34 +100,51 @@ const Header = ({
   const pagePaths = [
     { name: "Home", path: "/" },
     { name: "Dashboard", path: "/dashboard" },
-    { name: "Transaction", path: "/transaction" },
-    { name: "Contact", path: "/contact" },
-    { name: "Chat", path: "/chat" },
+    { name: "Sales", path: "/sales" },
+    { name: "Payment", path: "/payment" },
+    { name: "File", path: "/file" },
+    { name: "CRM", path: "/crm" },
+    { name: "Booking", path: "/booking" },
     { name: "Profile", path: "/profile" },
-    { name: "Settings", path: "user/account" },
+    { name: "User List", path: "user/list" },
     { name: "Create User", path: "user/create" },
     { name: "Edit User", path: "user/edit" },
-    { name: "User List", path: "user/list" },
     { name: "Card", path: "user/card" },
-    { name: "Order List", path: "/order" },
-    { name: "View Order", path: "order/view/ORD12345" },
+    { name: "Settings", path: "user/account" },
     { name: "Create Product", path: "/product/createproduct" },
     { name: "Edit Product", path: "/product/editproduct" },
     { name: "View Product", path: "/product/viewproduct" },
+    { name: "Order List", path: "/order" },
+    { name: "View Order", path: "order/view/ORD12345" },
     { name: "Create Invoice", path: "/invoice/createinvoice" },
     { name: "Invoice List", path: "/invoice/list" },
     { name: "Edit Invoice", path: "/invoice/editinvoice" },
     { name: "View Invoice", path: "/invoice/detailsinvoice" },
+    { name: "Blog list", path: "/blog" },
+    { name: "Create blog", path: "/blog/create" },
+    { name: "Edit Blog", path: "/blog/edit" },
+    { name: "Blog details", path: "/blog/details" },
+    { name: "Job list", path: "/job" },
+    { name: "Job details", path: "/job/details" },
+    { name: "Create job", path: "/job/create" },
+    { name: "Edit job", path: "/job/edit" },
+    { name: "Tour list", path: "/tour" },
+    { name: "Tour details", path: "/tour/details" },
+    { name: "Create tour", path: "/tour/create" },
+    { name: "Edit tour", path: "/tour/edit" },
+    { name: "Chat", path: "/chat" },
+    { name: "Mail", path: "/mail" },
     { name: "Calendar", path: "/calendar" },
     { name: "Holidays", path: "/calendar/holidays" },
-    { name: "Mail", path: "/mail" },
     { name: "Kanban", path: "/kanban" },
-    { name: "Payment", path: "/payment" },
-    { name: "Sales", path: "/sales" },
-    { name: "File", path: "/file" },
-    { name: "Blank", path: "/blank" },
-    { name: "Booking", path: "/booking" },
+    { name: "Transaction", path: "/transaction" },
     { name: "Gallary", path: "/gallary" },
+    { name: "Pricing", path: "/pricing" },
+    { name: "Blank", path: "/blank" },
+    { name: "FAQs", path: "/faq" },
+    { name: "About", path: "/about" },
+    { name: "Contact Us", path: "/contactus" },
+    { name: "Support", path: "/contact" },
   ]
 
   const filteredPaths = pagePaths.filter((page) =>
@@ -195,18 +220,33 @@ const Header = ({
           </Box>
 
           <Box sx={{ mt: "12px", paddingRight: "5px" }}>
-            <IconButton
-              onClick={handleColorMenuOpen}
+            <Badge
+              color='error'
+              variant='dot'
+              invisible={!showBadge}
               sx={{
-                animation: "spin 5s linear infinite",
-                "@keyframes spin": {
-                  "0%": { transform: "rotate(0deg)" },
-                  "100%": { transform: "rotate(360deg)" },
+                "& .MuiBadge-dot": {
+                  width: 5,
+                  height: 8,
+                  borderRadius: "50%",
+                  mt: 1,
+                  mr: 1.2,
                 },
               }}
             >
-              <RiSettings3Fill />
-            </IconButton>
+              <IconButton
+                onClick={handleColorMenuOpen}
+                sx={{
+                  animation: "spin 5s linear infinite",
+                  "@keyframes spin": {
+                    "0%": { transform: "rotate(0deg)" },
+                    "100%": { transform: "rotate(360deg)" },
+                  },
+                }}
+              >
+                <RiSettings3Fill />
+              </IconButton>
+            </Badge>
             <Menu
               anchorEl={colorAnchorEl}
               open={Boolean(colorAnchorEl)}
@@ -243,7 +283,8 @@ const Header = ({
               anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
             >
               <MenuItem
-                onClick={() => changeColor("#d9f4e8")}
+                onClick={handleReset}
+                // onClick={() => changeColor("#d9f4e8")}
                 sx={{
                   fontSize: "14px",
                   fontWeight: "500",

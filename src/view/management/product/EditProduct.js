@@ -476,9 +476,23 @@ const EditProduct = () => {
                     rules={{ required: "Product Description is required" }}
                     render={({ field }) => (
                       <Box
-                        style={{
-                          backgroundColor: theme.palette.background.paper,
-                          borderRadius: "8px",
+                        sx={{
+                          "& .quill": {
+                            border: "1px solid #38424d",
+                            borderRadius: "5px",
+                            minHeight: "150px",
+                            "& .ql-container": {
+                              borderRadius: "0px 0px 5px 5px",
+                              border: "1px solid #38424d",
+                            },
+                            "& .ql-toolbar": {
+                              borderRadius: "5px 5px 0 0",
+                              border: "1px solid #38424d",
+                            },
+                            "& .ql-editor": {
+                              minHeight: "135px",
+                            },
+                          },
                         }}
                       >
                         <ReactQuill

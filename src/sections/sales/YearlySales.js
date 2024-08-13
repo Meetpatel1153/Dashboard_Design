@@ -183,12 +183,12 @@ const YearlySales = () => {
                 <linearGradient id='colorExpense' x1='0' y1='0' x2='0' y2='1'>
                   <stop
                     offset='5%'
-                    stopColor={theme.palette.presets.color}
+                    stopColor='#0ea770'
                     stopOpacity={0.5}
                   />
                   <stop
                     offset='85%'
-                    stopColor={theme.palette.presets.color}
+                    stopColor='#0ea770'
                     stopOpacity={0}
                   />
                 </linearGradient>
@@ -212,7 +212,7 @@ const YearlySales = () => {
               <Area
                 type='monotone'
                 dataKey='expense'
-                stroke={theme.palette.presets.color}
+                stroke='#0ea770'
                 strokeWidth={3}
                 fillOpacity={1}
                 fill='url(#colorExpense)'
@@ -228,7 +228,7 @@ const YearlySales = () => {
               <Line
                 type='monotone'
                 dataKey='expense'
-                stroke={theme.palette.presets.color}
+                stroke='#0ea770'
                 strokeWidth={3}
                 dot={false}
               />

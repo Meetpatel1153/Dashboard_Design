@@ -45,7 +45,7 @@ const NotFound = () => {
                 fontFamily: "Inter, sans-serif",
               }}
             >
-              Sorry,This Page Not Found!
+              Sorry,Page Not Found!
             </Typography>
 
             <Typography

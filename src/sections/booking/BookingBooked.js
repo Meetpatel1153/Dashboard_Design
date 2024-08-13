@@ -84,6 +84,10 @@ const BookingBooked = () => {
                   sx={{
                     p: "2.5px",
                     borderRadius: "10px",
+                    "& .MuiLinearProgress-bar": {
+                      backgroundColor: data.color,
+                      borderRadius: "10px",
+                    },
                   }}
                 />
               </Box>

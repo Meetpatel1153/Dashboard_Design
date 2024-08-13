@@ -8,6 +8,7 @@ import {
   Typography,
   Badge,
   Button,
+  useTheme,
 } from "@mui/material"
 import InboxIcon from "@mui/icons-material/Inbox"
 import DraftsIcon from "@mui/icons-material/Drafts"
@@ -38,8 +39,9 @@ const EmailCategoryList = ({
   onCategoryChange,
   handleComposeOpen,
   toggleDrawer,
-  theme,
+  isDrawerOpenList,
 }) => {
+  const theme = useTheme()
   const getUnreadCount = (category) => {
     if (category === "all") {
       return emails.filter((email) => email.unread).length
@@ -56,8 +58,8 @@ const EmailCategoryList = ({
           marginLeft: "-10px",
           p: 1,
           borderRadius: "10px",
-          maxHeight: toggleDrawer ? "auto" : "72vh",
-          height: toggleDrawer ? "auto" : "72vh",
+          maxHeight: isDrawerOpenList ? "auto" : "72vh",
+          height: isDrawerOpenList ? "auto" : "72vh",
           overflowY: "scroll",
           scrollBehavior: "auto",
           "&::-webkit-scrollbar": {

@@ -115,8 +115,8 @@ const IntroFeatured = () => {
             indicators={true}
             indicatorContainerProps={{
               style: {
-                position: "absolute", 
-                top: "20px", 
+                position: "absolute",
+                top: "20px",
                 right: "10px",
                 zIndex: 2,
               },

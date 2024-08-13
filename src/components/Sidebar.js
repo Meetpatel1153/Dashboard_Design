@@ -40,8 +40,13 @@ import { MdPriceChange } from "react-icons/md"
 import { PiSealQuestionFill } from "react-icons/pi"
 import { CgWebsite } from "react-icons/cg"
 import { MdContactMail } from "react-icons/md"
+import { TbLogs } from "react-icons/tb"
+import { MdBusinessCenter } from "react-icons/md"
+import { MdTour } from "react-icons/md"
+import { TbCirclesRelation } from "react-icons/tb"
+import { VscFeedback } from "react-icons/vsc"
 
-const Sidebar = () => {
+const Sidebar = ({ setMobileOpen, mobileOpen }) => {
   const navigate = useNavigate()
   const [openOverview, setOpenOverview] = useState(true)
   const [openManagement, setOpenManagement] = useState(true)
@@ -51,6 +56,9 @@ const Sidebar = () => {
   const [openInvoiceMenu, setOpenInvoiceMenu] = useState(false)
   const [openUserMenu, setOpenUserMenu] = useState(false)
   const [openOrderMenu, setOpenOrderMenu] = useState(false)
+  const [openBlogMenu, setOpenBlogMenu] = useState(false)
+  const [openJobMenu, setOpenJobMenu] = useState(false)
+  const [openTourMenu, setOpenTourMenu] = useState(false)
 
   const location = useLocation()
   const theme = useTheme()
@@ -72,10 +80,17 @@ const Sidebar = () => {
       setOpenUserMenu(!openUserMenu)
     } else if (section === "order") {
       setOpenOrderMenu(!openOrderMenu)
+    } else if (section === "blog") {
+      setOpenBlogMenu(!openBlogMenu)
+    } else if (section === "job") {
+      setOpenJobMenu(!openJobMenu)
+    } else if (section === "tour") {
+      setOpenTourMenu(!openTourMenu)
     }
   }
 
   const handleNavigation = (path) => {
+    setMobileOpen(!mobileOpen)
     navigate(path)
   }
 
@@ -144,9 +159,7 @@ const Sidebar = () => {
               sx={{
                 textTransform: "none",
                 backgroundColor:
-                  location.pathname === "/" ||
-                  location.pathname === "/profile" ||
-                  location.pathname === "/setting"
+                  location.pathname === "/"
                     ? theme.palette.sidebar.color
                     : "transparent",
 
@@ -324,6 +337,38 @@ const Sidebar = () => {
               </ListItemIcon>
               <ListItemText
                 primary='Booking'
+                primaryTypographyProps={{
+                  fontFamily: "Inter, sans-serif",
+                  fontSize: "16px",
+                  fontWeight: "500",
+                  color: theme.palette.text.primary,
+                }}
+              />
+            </ListItem>
+            <ListItem
+              button
+              component={Button}
+              onClick={() => handleNavigation("/crm")}
+              sx={{
+                textTransform: "none",
+                backgroundColor:
+                  location.pathname === "/crm"
+                    ? theme.palette.sidebar.color
+                    : "transparent",
+
+                borderRadius: "5px",
+              }}
+            >
+              <ListItemIcon>
+                <TbCirclesRelation
+                  size={22}
+                  style={{
+                    color: theme.palette.text.primary,
+                  }}
+                />
+              </ListItemIcon>
+              <ListItemText
+                primary='CRM'
                 primaryTypographyProps={{
                   fontFamily: "Inter, sans-serif",
                   fontSize: "16px",
@@ -613,7 +658,7 @@ const Sidebar = () => {
                   }}
                 >
                   <ListItemText
-                    primary='- Create product'
+                    primary='- Create'
                     primaryTypographyProps={{
                       fontFamily: "Inter, sans-serif",
                       fontSize: "14px",
@@ -634,7 +679,7 @@ const Sidebar = () => {
                   }}
                 >
                   <ListItemText
-                    primary='- Edit product'
+                    primary='- Edit'
                     primaryTypographyProps={{
                       fontFamily: "Inter, sans-serif",
                       fontSize: "14px",
@@ -655,7 +700,7 @@ const Sidebar = () => {
                   }}
                 >
                   <ListItemText
-                    primary='- View product'
+                    primary='- View'
                     primaryTypographyProps={{
                       fontFamily: "Inter, sans-serif",
                       fontSize: "14px",
@@ -731,7 +776,7 @@ const Sidebar = () => {
                   }}
                 >
                   <ListItemText
-                    primary='- Order'
+                    primary='- Order list'
                     primaryTypographyProps={{
                       fontFamily: "Inter, sans-serif",
                       fontSize: "14px",
@@ -824,56 +869,14 @@ const Sidebar = () => {
                 <ListItem
                   button
                   component={Button}
-                  onClick={() => handleNavigation("/invoice/createinvoice")}
-                  sx={{
-                    textTransform: "none",
-                    borderRadius: "5px",
-                  }}
-                >
-                  <ListItemText
-                    primary='- Create invoice'
-                    primaryTypographyProps={{
-                      fontFamily: "Inter, sans-serif",
-                      fontSize: "14px",
-                      fontWeight: "400",
-                      color: theme.palette.text.secondary,
-                    }}
-                  />
-                </ListItem>
-
-                <ListItem
-                  button
-                  component={Button}
                   onClick={() => handleNavigation("/invoice/list")}
                   sx={{
                     textTransform: "none",
                     borderRadius: "5px",
-                    mt: -1,
                   }}
                 >
                   <ListItemText
                     primary='- Invoice list'
-                    primaryTypographyProps={{
-                      fontFamily: "Inter, sans-serif",
-                      fontSize: "14px",
-                      fontWeight: "400",
-                      color: theme.palette.text.secondary,
-                    }}
-                  />
-                </ListItem>
-
-                <ListItem
-                  button
-                  component={Button}
-                  onClick={() => handleNavigation("/invoice/editinvoice")}
-                  sx={{
-                    textTransform: "none",
-                    borderRadius: "5px",
-                    mt: -1,
-                  }}
-                >
-                  <ListItemText
-                    primary='- Edit invoice'
                     primaryTypographyProps={{
                       fontFamily: "Inter, sans-serif",
                       fontSize: "14px",
@@ -903,8 +906,477 @@ const Sidebar = () => {
                     }}
                   />
                 </ListItem>
+
+                <ListItem
+                  button
+                  component={Button}
+                  onClick={() => handleNavigation("/invoice/createinvoice")}
+                  sx={{
+                    textTransform: "none",
+                    borderRadius: "5px",
+                    mt: -1,
+                  }}
+                >
+                  <ListItemText
+                    primary='- Create'
+                    primaryTypographyProps={{
+                      fontFamily: "Inter, sans-serif",
+                      fontSize: "14px",
+                      fontWeight: "400",
+                      color: theme.palette.text.secondary,
+                    }}
+                  />
+                </ListItem>
+
+                <ListItem
+                  button
+                  component={Button}
+                  onClick={() => handleNavigation("/invoice/editinvoice")}
+                  sx={{
+                    textTransform: "none",
+                    borderRadius: "5px",
+                    mt: -1,
+                  }}
+                >
+                  <ListItemText
+                    primary='- Edit'
+                    primaryTypographyProps={{
+                      fontFamily: "Inter, sans-serif",
+                      fontSize: "14px",
+                      fontWeight: "400",
+                      color: theme.palette.text.secondary,
+                    }}
+                  />
+                </ListItem>
               </List>
             </Collapse>
+
+            <ListItem
+              button
+              onClick={() => handleToggle("blog")}
+              sx={{
+                textTransform: "none",
+                backgroundColor:
+                  location.pathname === "/blog" ||
+                  location.pathname === "/blog/create" ||
+                  location.pathname === "/blog/edit" ||
+                  location.pathname === "/blog/details"
+                    ? theme.palette.sidebar.color
+                    : "transparent",
+                borderRadius: "5px",
+              }}
+            >
+              <ListItemIcon>
+                <TbLogs
+                  size={22}
+                  style={{
+                    color: theme.palette.text.primary,
+                  }}
+                />
+              </ListItemIcon>
+              <ListItemText
+                primary='Blog'
+                primaryTypographyProps={{
+                  fontFamily: "Inter, sans-serif",
+                  fontSize: "16px",
+                  fontWeight: "500",
+                  color: theme.palette.text.primary,
+                }}
+              />
+              {openBlogMenu ? (
+                <ExpandLess
+                  sx={{
+                    marginLeft: "auto",
+                    color: theme.palette.text.secondary,
+                  }}
+                />
+              ) : (
+                <ExpandMore
+                  sx={{
+                    marginLeft: "auto",
+                    color: theme.palette.text.secondary,
+                  }}
+                />
+              )}
+            </ListItem>
+            <Collapse in={openBlogMenu}>
+              {" "}
+              <List
+                sx={{
+                  mt: "-20px",
+                  paddingLeft: "60px",
+                  width: "250px",
+                }}
+              >
+                <ListItem
+                  button
+                  component={Button}
+                  onClick={() => handleNavigation("/blog")}
+                  sx={{
+                    textTransform: "none",
+                    borderRadius: "5px",
+                  }}
+                >
+                  <ListItemText
+                    primary='- Blog list'
+                    primaryTypographyProps={{
+                      fontFamily: "Inter, sans-serif",
+                      fontSize: "14px",
+                      fontWeight: "400",
+                      color: theme.palette.text.secondary,
+                    }}
+                  />
+                </ListItem>
+
+                <ListItem
+                  button
+                  component={Button}
+                  onClick={() => handleNavigation("/blog/details")}
+                  sx={{
+                    textTransform: "none",
+                    borderRadius: "5px",
+                    mt: -1,
+                  }}
+                >
+                  <ListItemText
+                    primary='- Details'
+                    primaryTypographyProps={{
+                      fontFamily: "Inter, sans-serif",
+                      fontSize: "14px",
+                      fontWeight: "400",
+                      color: theme.palette.text.secondary,
+                    }}
+                  />
+                </ListItem>
+
+                <ListItem
+                  button
+                  component={Button}
+                  onClick={() => handleNavigation("/blog/create")}
+                  sx={{
+                    textTransform: "none",
+                    borderRadius: "5px",
+                    mt: -1,
+                  }}
+                >
+                  <ListItemText
+                    primary='- Create'
+                    primaryTypographyProps={{
+                      fontFamily: "Inter, sans-serif",
+                      fontSize: "14px",
+                      fontWeight: "400",
+                      color: theme.palette.text.secondary,
+                    }}
+                  />
+                </ListItem>
+
+                <ListItem
+                  button
+                  component={Button}
+                  onClick={() => handleNavigation("/blog/edit")}
+                  sx={{
+                    textTransform: "none",
+                    borderRadius: "5px",
+                    mt: -1,
+                  }}
+                >
+                  <ListItemText
+                    primary='- Edit'
+                    primaryTypographyProps={{
+                      fontFamily: "Inter, sans-serif",
+                      fontSize: "14px",
+                      fontWeight: "400",
+                      color: theme.palette.text.secondary,
+                    }}
+                  />
+                </ListItem>
+              </List>
+            </Collapse>
+
+            <ListItem
+              button
+              onClick={() => handleToggle("job")}
+              sx={{
+                textTransform: "none",
+                backgroundColor:
+                  location.pathname === "/job" ||
+                  location.pathname === "/job/details" ||
+                  location.pathname === "/job/create" ||
+                  location.pathname === "/job/edit"
+                    ? theme.palette.sidebar.color
+                    : "transparent",
+                borderRadius: "5px",
+              }}
+            >
+              <ListItemIcon>
+                <MdBusinessCenter
+                  size={22}
+                  style={{
+                    color: theme.palette.text.primary,
+                  }}
+                />
+              </ListItemIcon>
+              <ListItemText
+                primary='Job'
+                primaryTypographyProps={{
+                  fontFamily: "Inter, sans-serif",
+                  fontSize: "16px",
+                  fontWeight: "500",
+                  color: theme.palette.text.primary,
+                }}
+              />
+              {openJobMenu ? (
+                <ExpandLess
+                  sx={{
+                    marginLeft: "auto",
+                    color: theme.palette.text.secondary,
+                  }}
+                />
+              ) : (
+                <ExpandMore
+                  sx={{
+                    marginLeft: "auto",
+                    color: theme.palette.text.secondary,
+                  }}
+                />
+              )}
+            </ListItem>
+            <Collapse in={openJobMenu}>
+              {" "}
+              <List
+                sx={{
+                  mt: "-20px",
+                  paddingLeft: "60px",
+                  width: "250px",
+                }}
+              >
+                <ListItem
+                  button
+                  component={Button}
+                  onClick={() => handleNavigation("/job")}
+                  sx={{
+                    textTransform: "none",
+                    borderRadius: "5px",
+                  }}
+                >
+                  <ListItemText
+                    primary='- Job list'
+                    primaryTypographyProps={{
+                      fontFamily: "Inter, sans-serif",
+                      fontSize: "14px",
+                      fontWeight: "400",
+                      color: theme.palette.text.secondary,
+                    }}
+                  />
+                </ListItem>
+
+                <ListItem
+                  button
+                  component={Button}
+                  onClick={() => handleNavigation("/job/details")}
+                  sx={{
+                    textTransform: "none",
+                    borderRadius: "5px",
+                    mt: -1,
+                  }}
+                >
+                  <ListItemText
+                    primary='- Details'
+                    primaryTypographyProps={{
+                      fontFamily: "Inter, sans-serif",
+                      fontSize: "14px",
+                      fontWeight: "400",
+                      color: theme.palette.text.secondary,
+                    }}
+                  />
+                </ListItem>
+
+                <ListItem
+                  button
+                  component={Button}
+                  onClick={() => handleNavigation("/job/create")}
+                  sx={{
+                    textTransform: "none",
+                    borderRadius: "5px",
+                    mt: -1,
+                  }}
+                >
+                  <ListItemText
+                    primary='- Create'
+                    primaryTypographyProps={{
+                      fontFamily: "Inter, sans-serif",
+                      fontSize: "14px",
+                      fontWeight: "400",
+                      color: theme.palette.text.secondary,
+                    }}
+                  />
+                </ListItem>
+
+                <ListItem
+                  button
+                  component={Button}
+                  onClick={() => handleNavigation("/job/edit")}
+                  sx={{
+                    textTransform: "none",
+                    borderRadius: "5px",
+                    mt: -1,
+                  }}
+                >
+                  <ListItemText
+                    primary='- Edit '
+                    primaryTypographyProps={{
+                      fontFamily: "Inter, sans-serif",
+                      fontSize: "14px",
+                      fontWeight: "400",
+                      color: theme.palette.text.secondary,
+                    }}
+                  />
+                </ListItem>
+              </List>
+            </Collapse>
+
+            <ListItem
+              button
+              onClick={() => handleToggle("tour")}
+              sx={{
+                textTransform: "none",
+                backgroundColor:
+                  location.pathname === "/tour" ||
+                  location.pathname === "/tour/details" ||
+                  location.pathname === "/tour/create" ||
+                  location.pathname === "/tour/edit"
+                    ? theme.palette.sidebar.color
+                    : "transparent",
+                borderRadius: "5px",
+              }}
+            >
+              <ListItemIcon>
+                <MdTour
+                  size={22}
+                  style={{
+                    color: theme.palette.text.primary,
+                  }}
+                />
+              </ListItemIcon>
+              <ListItemText
+                primary='Tour'
+                primaryTypographyProps={{
+                  fontFamily: "Inter, sans-serif",
+                  fontSize: "16px",
+                  fontWeight: "500",
+                  color: theme.palette.text.primary,
+                }}
+              />
+              {openTourMenu ? (
+                <ExpandLess
+                  sx={{
+                    marginLeft: "auto",
+                    color: theme.palette.text.secondary,
+                  }}
+                />
+              ) : (
+                <ExpandMore
+                  sx={{
+                    marginLeft: "auto",
+                    color: theme.palette.text.secondary,
+                  }}
+                />
+              )}
+            </ListItem>
+            <Collapse in={openTourMenu}>
+              {" "}
+              <List
+                sx={{
+                  mt: "-20px",
+                  paddingLeft: "60px",
+                  width: "250px",
+                }}
+              >
+                <ListItem
+                  button
+                  component={Button}
+                  onClick={() => handleNavigation("/tour")}
+                  sx={{
+                    textTransform: "none",
+                    borderRadius: "5px",
+                  }}
+                >
+                  <ListItemText
+                    primary='- Tour list'
+                    primaryTypographyProps={{
+                      fontFamily: "Inter, sans-serif",
+                      fontSize: "14px",
+                      fontWeight: "400",
+                      color: theme.palette.text.secondary,
+                    }}
+                  />
+                </ListItem>
+
+                <ListItem
+                  button
+                  component={Button}
+                  onClick={() => handleNavigation("/tour/details")}
+                  sx={{
+                    textTransform: "none",
+                    borderRadius: "5px",
+                    mt: -1,
+                  }}
+                >
+                  <ListItemText
+                    primary='- Details'
+                    primaryTypographyProps={{
+                      fontFamily: "Inter, sans-serif",
+                      fontSize: "14px",
+                      fontWeight: "400",
+                      color: theme.palette.text.secondary,
+                    }}
+                  />
+                </ListItem>
+
+                <ListItem
+                  button
+                  component={Button}
+                  onClick={() => handleNavigation("/tour/create")}
+                  sx={{
+                    textTransform: "none",
+                    borderRadius: "5px",
+                    mt: -1,
+                  }}
+                >
+                  <ListItemText
+                    primary='- Create'
+                    primaryTypographyProps={{
+                      fontFamily: "Inter, sans-serif",
+                      fontSize: "14px",
+                      fontWeight: "400",
+                      color: theme.palette.text.secondary,
+                    }}
+                  />
+                </ListItem>
+
+                <ListItem
+                  button
+                  component={Button}
+                  onClick={() => handleNavigation("/tour/edit")}
+                  sx={{
+                    textTransform: "none",
+                    borderRadius: "5px",
+                    mt: -1,
+                  }}
+                >
+                  <ListItemText
+                    primary='- Edit '
+                    primaryTypographyProps={{
+                      fontFamily: "Inter, sans-serif",
+                      fontSize: "14px",
+                      fontWeight: "400",
+                      color: theme.palette.text.secondary,
+                    }}
+                  />
+                </ListItem>
+              </List>
+            </Collapse>
+
             <ListItem
               button
               component={Button}
@@ -1453,6 +1925,39 @@ const Sidebar = () => {
                 }}
               />
             </ListItem>
+
+            <ListItem
+              button
+              component={Button}
+              onClick={() => handleNavigation("/feedback")}
+              sx={{
+                textTransform: "none",
+                backgroundColor:
+                  location.pathname === "/feedback"
+                    ? theme.palette.sidebar.color
+                    : "transparent",
+
+                borderRadius: "5px",
+              }}
+            >
+              <ListItemIcon>
+                <VscFeedback
+                  size={22}
+                  style={{
+                    color: theme.palette.text.primary,
+                  }}
+                />
+              </ListItemIcon>
+              <ListItemText
+                primary='Feedback'
+                primaryTypographyProps={{
+                  fontFamily: "Inter, sans-serif",
+                  fontSize: "16px",
+                  fontWeight: "500",
+                  color: theme.palette.text.primary,
+                }}
+              />
+            </ListItem>
           </List>
         </Collapse>
       </Box>
@@ -1512,7 +2017,10 @@ const Sidebar = () => {
           </CardContent>
         </Card>
         <Button
-          onClick={() => navigate("/contact")}
+          onClick={() => {
+            navigate("/contact")
+            setMobileOpen(!mobileOpen)
+          }}
           sx={{
             fontFamily: "Inter, sans-serif",
             fontSize: "16px",

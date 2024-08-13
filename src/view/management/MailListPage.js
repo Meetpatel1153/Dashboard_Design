@@ -136,6 +136,7 @@ const EmailListPage = () => {
                   toggleDrawer={toggleDrawer}
                   onCategoryChange={handleCategoryChange}
                   handleComposeOpen={handleComposeOpen}
+                  isDrawerOpenList={isDrawerOpenList}
                 />
               </Box>
             </Drawer>
@@ -152,6 +153,7 @@ const EmailListPage = () => {
                   handleSearchChange={handleSearchChange}
                   filteredEmails={filteredEmails}
                   handleEmailClick={handleEmailClick}
+                  isDrawerOpenList={isDrawerOpenList}
                 />
               </Box>
             </Drawer>
@@ -167,6 +169,7 @@ const EmailListPage = () => {
                   onCategoryChange={handleCategoryChange}
                   handleComposeOpen={handleComposeOpen}
                   theme={theme}
+                  isDrawerOpenList={isDrawerOpenList}
                 />
               </Box>
             </Grid>
@@ -183,7 +186,7 @@ const EmailListPage = () => {
                   handleSearchChange={handleSearchChange}
                   filteredEmails={filteredEmails}
                   handleEmailClick={handleEmailClick}
-                  theme={theme}
+                  isDrawerOpenList={isDrawerOpenList}
                 />
               </Box>
             </Grid>

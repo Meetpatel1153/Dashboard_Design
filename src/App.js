@@ -9,7 +9,7 @@ function App() {
       <Dashboard />
       <ToastContainer
         position='top-right'
-        autoClose={700}
+        autoClose={900}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
@@ -18,6 +18,12 @@ function App() {
         draggable
         pauseOnHover
         theme='colored'
+        style={{
+          fontSize: "16px",
+          fontWeight: "700",
+          textTransform: "none",
+          fontFamily: "Inter, sans-serif",
+        }}
       />
     </ThemeProviderComponent>
   )

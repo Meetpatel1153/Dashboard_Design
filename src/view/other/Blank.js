@@ -1,4 +1,4 @@
-import { Box, Grid, useTheme } from "@mui/material"
+import { Box, Grid, Typography, useTheme } from "@mui/material"
 import React from "react"
 
 const Blank = () => {
@@ -13,6 +13,16 @@ const Blank = () => {
           minHeight: "92vh",
         }}
       >
+        <Typography
+          sx={{
+            fontWeight: "600",
+            fontSize: "30px",
+            fontFamily: "Inter, sans-serif",
+            mb: 4,
+          }}
+        >
+          Blank
+        </Typography>
         <Grid container spacing={2}>
           <Grid item lg={12} md={12} sm={12} xs={12}>
             <Box
@@ -98,7 +108,7 @@ const Blank = () => {
               4
             </Box>
           </Grid>
-          <Grid item lg={3} md={6} sm={12} xs={12}>
+          <Grid item lg={3} md={6} sm={6} xs={12}>
             <Box
               sx={{
                 backgroundColor: theme.palette.background.paper,
@@ -112,7 +122,7 @@ const Blank = () => {
               3
             </Box>
           </Grid>
-          <Grid item lg={3} md={6} sm={12} xs={12}>
+          <Grid item lg={3} md={6} sm={6} xs={12}>
             <Box
               sx={{
                 backgroundColor: theme.palette.background.paper,
@@ -126,7 +136,7 @@ const Blank = () => {
               3
             </Box>
           </Grid>
-          <Grid item lg={3} md={6} sm={12} xs={12}>
+          <Grid item lg={3} md={6} sm={6} xs={12}>
             <Box
               sx={{
                 backgroundColor: theme.palette.background.paper,
@@ -140,7 +150,7 @@ const Blank = () => {
               3
             </Box>
           </Grid>
-          <Grid item lg={3} md={6} sm={12} xs={12}>
+          <Grid item lg={3} md={6} sm={6} xs={12}>
             <Box
               sx={{
                 backgroundColor: theme.palette.background.paper,

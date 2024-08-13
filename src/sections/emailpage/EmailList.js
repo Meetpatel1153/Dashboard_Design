@@ -9,6 +9,7 @@ import {
   ListItemAvatar,
   ListItemText,
   Typography,
+  useTheme,
 } from "@mui/material"
 import { Box } from "@mui/system"
 import React from "react"
@@ -20,16 +21,13 @@ const EmailList = ({
   handleSearchChange,
   filteredEmails,
   handleEmailClick,
-  theme,
 }) => {
+  const theme = useTheme()
   return (
     <>
       <Box
         sx={{
           p: 1,
-          backgroundColor: isDrawerOpenList
-            ? "white"
-            : theme.palette.background.box,
           borderRadius: "10px",
           mr: 1,
         }}
@@ -67,7 +65,7 @@ const EmailList = ({
         </Box>
         <List
           sx={{
-            maxHeight: isDrawerOpenList ? "auto" : "63vh",
+            maxHeight: isDrawerOpenList ? "auto" : "auto",
             height: isDrawerOpenList ? "auto" : "63vh",
             overflowY: "scroll",
             scrollBehavior: "auto",

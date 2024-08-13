@@ -7,7 +7,7 @@ import NavigateNextIcon from "@mui/icons-material/NavigateNext"
 import { PiCalendarHeartFill } from "react-icons/pi"
 import { response } from "../mock/Holiday"
 
-export const Holidays = () => {
+const Holidays = () => {
   const [holidays, setHolidays] = useState([])
   const location = useLocation()
   const pathnames = location.pathname.split("/").filter((x) => x)
@@ -199,3 +199,4 @@ export const Holidays = () => {
     </Box>
   )
 }
+export default Holidays
