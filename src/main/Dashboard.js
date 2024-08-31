@@ -141,7 +141,7 @@ const Dashboard = () => {
     <>
       <BrowserRouter>
         <ScrollToTop />
-        <ScrollProgressBar />
+        
         <Box sx={{ display: "flex" }}>
           <CssBaseline />
           {token && (
